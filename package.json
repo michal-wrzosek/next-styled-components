@@ -1,10 +1,10 @@
 {
-  "name": "react-component-lib",
-  "version": "1.0.0",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "name": "next-styled-components",
+  "version": "0.0.1",
+  "module": "dist/index.js",
+  "description": "Styled-Components that are compatible with Next.js server components (RSC)",
   "repository": {
-    "url": "https://github.com/michal-wrzosek/react-component-lib",
+    "url": "https://github.com/michal-wrzosek/next-styled-components",
     "type": "git"
   },
   "license": "MIT",
@@ -15,29 +15,32 @@
     "@types/eslint__js": "^8.42.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/stylis": "^4.2.6",
     "concurrently": "^8.2.2",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.35.0",
     "globals": "^15.9.0",
-    "install-peers-cli": "^2.2.0",
+    "install-peers": "^1.0.4",
     "prettier": "^3.3.3",
     "rollup": "^4.20.0",
+    "rollup-preserve-directives": "^1.1.1",
+    "stylis": "^4.3.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.0.1"
   },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "styled-components": "^6.1.12"
+    "next": "^14",
+    "react": "^18",
+    "react-dom": "^18"
   },
   "scripts": {
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
     "prepublishOnly": "npm run build",
-    "postinstall": "install-peers -f && cd example-nextjs && npm i",
+    "prepare": "cd example-nextjs && npm i",
     "start-example": "cd example-nextjs && npm run dev",
     "deploy-example": "npm run build && cd example-nextjs && npm run deploy",
     "dev": "concurrently --kill-others \"npm run build-watch\" \"npm run start-example\"",

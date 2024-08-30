@@ -1,8 +1,19 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { StyledComponentsRegistry } from './registry';
+import { createGlobalStyle, StyleSheetManager, ThemeProvider } from '@/react-component-lib';
 
 const inter = Inter({ subsets: ['latin'] });
+
+const GlobalStyle = createGlobalStyle`
+  html, body {
+    color: white;
+    background-color: black;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+`;
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyleSheetManager>
+          <ThemeProvider theme={{ primaryColor: 'blue' }}>
+            <GlobalStyle />
+            {children}
+          </ThemeProvider>
+        </StyleSheetManager>
       </body>
     </html>
   );

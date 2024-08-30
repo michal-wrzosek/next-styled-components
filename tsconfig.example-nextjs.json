@@ -9,7 +9,7 @@
     "strictNullChecks": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
-    "outDir": "./dist",
+    "outDir": "./example-nextjs/src/react-component-lib",
     "target": "es5",
     "jsx": "react"
   },
