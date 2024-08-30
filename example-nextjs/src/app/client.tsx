@@ -1,7 +1,7 @@
 'use client';
 
-import { styled } from 'next-styled-components';
-// import { styled } from '@/react-component-lib';
+// import { styled } from 'next-styled-components';
+import { styled } from '@/react-component-lib';
 import { useState } from 'react';
 
 const StyledDiv = styled.div<{ $isOn: boolean }>`

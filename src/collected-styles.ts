@@ -18,6 +18,7 @@ export const CollectedStyles: {
   styles: Record<string, string>;
   keyframes: Record<string, string>;
   globalStyles: string;
+  subscribers: (() => void)[];
   setTheme: (theme: Record<string, unknown>) => void;
   getClassName: () => string;
   getKeyframeName: () => string;
@@ -26,7 +27,6 @@ export const CollectedStyles: {
   setGlobalStyles: (css: string) => void;
   getStyles: () => string;
   subscribe: (callback: () => void) => void;
-  subscribers: (() => void)[];
 } = {
   theme: {},
   counter: 0,
@@ -34,6 +34,7 @@ export const CollectedStyles: {
   styles: {},
   keyframes: {},
   globalStyles: '',
+  subscribers: [],
   setTheme: function (theme: Record<string, unknown>) {
     this.theme = theme;
     this.subscribers.forEach((subscriber) => subscriber());
@@ -63,7 +64,6 @@ export const CollectedStyles: {
   subscribe: function (callback) {
     this.subscribers.push(callback);
   },
-  subscribers: [],
   getStyles: function () {
     const keyframes = Object.entries(this.keyframes)
       .map(([key, value]) => {

@@ -1,18 +1,38 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { createGlobalStyle, StyleSheetManager, ThemeProvider } from 'next-styled-components';
-// import { createGlobalStyle, StyleSheetManager, ThemeProvider } from '@/react-component-lib';
+// import { createGlobalStyle, css, styled, StyleSheetManager, ThemeProvider } from 'next-styled-components';
+import { createGlobalStyle, css, styled, StyleSheetManager, ThemeProvider } from '@/react-component-lib';
+import { PropsWithChildren } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const GlobalStyle = createGlobalStyle`
+const SomeComponent = ({ className, children }: PropsWithChildren<{ className?: string }>) => (
+  <div className={className}>{children}</div>
+);
+
+const SomeStyledComponent = styled(SomeComponent)`
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  background-color: ${({ theme }) => theme.primaryColor};
+`;
+
+const GlobalStyle = createGlobalStyle<{ bg: string; color: string }>`
   html, body {
-    color: white;
-    background-color: black;
+    color: ${css`
+      ${({ color }) => color}
+    `};
+    background-color: ${({ bg }) => bg};
   }
 
   *, *::before, *::after {
     box-sizing: border-box;
+  }
+
+  ${SomeStyledComponent} {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
   }
 `;
 
@@ -31,8 +51,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <StyleSheetManager>
           <ThemeProvider theme={{ primaryColor: 'blue' }}>
-            <GlobalStyle />
+            <GlobalStyle bg="black" color="white" />
             {children}
+            <SomeStyledComponent>Server Component in Layout</SomeStyledComponent>
           </ThemeProvider>
         </StyleSheetManager>
       </body>

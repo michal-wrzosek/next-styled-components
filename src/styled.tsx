@@ -102,11 +102,7 @@ function processDynamicCssLines<Props extends object>(
 
 export function css<StyledProps extends object = {}>(
   template: TemplateStringsArray,
-  ...templateElements: (
-    | InterpolationFunction<{ theme: DefaultTheme } & StyledProps, undefined>
-    | StyledComponent<{ theme: DefaultTheme } & StyledProps, undefined>
-    | string
-  )[]
+  ...templateElements: (InterpolationFunction<{ theme: DefaultTheme } & StyledProps, undefined> | Function | string)[]
 ): InterpolationFunction<StyledProps, undefined> {
   const { cssLines } = processTemplate(template, templateElements);
 
@@ -127,7 +123,7 @@ export function styled<Props extends object = {}>(ComponentToStyle: (props: Prop
     template: TemplateStringsArray,
     ...templateElements: (
       | InterpolationFunction<{ theme: DefaultTheme } & Props & StyledProps, undefined>
-      | StyledComponent<{ theme: DefaultTheme } & Props & StyledProps, undefined>
+      | Function
       | string
     )[]
   ): StyledComponent<Props & StyledProps, undefined> {
@@ -422,11 +418,7 @@ styled.view = getStyledForHTMLTag('view');
 
 export function createGlobalStyle<StyledProps extends object = {}>(
   template: TemplateStringsArray,
-  ...templateElements: (
-    | InterpolationFunction<{ theme: DefaultTheme } & StyledProps, undefined>
-    | StyledComponent<{ theme: DefaultTheme } & StyledProps, undefined>
-    | string
-  )[]
+  ...templateElements: (InterpolationFunction<{ theme: DefaultTheme } & StyledProps, undefined> | Function | string)[]
 ): (props: StyledProps) => JSX.Element {
   const { cssLines } = processTemplate(template, templateElements);
 
@@ -464,7 +456,7 @@ function setTheme(theme: DefaultTheme) {
   CollectedStyles.setTheme(theme);
 }
 
-async function InnerStyleTag() {
+async function ServerStyleTag() {
   await new Promise((resolve) => setTimeout(resolve, 0));
 
   return <style data-id="styled-components-server" dangerouslySetInnerHTML={{ __html: CollectedStyles.getStyles() }} />;
@@ -474,7 +466,7 @@ export function StyleSheetManager({ children }: PropsWithChildren) {
   return (
     <>
       {children}
-      <InnerStyleTag />
+      <ServerStyleTag />
       <ClientStyleTag />
     </>
   );

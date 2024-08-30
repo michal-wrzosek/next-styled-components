@@ -4,6 +4,8 @@
 
 **Styled-Components that are compatible with Next.js server components (RSC).**
 
+![demo](logo.png)
+
 The goal of this library is that you should be able to use it as the [original library](https://github.com/styled-components/styled-components) and it will work with not only client components but also new server ones (RSC).
 
 This library covers most important parts of the original lib API:
