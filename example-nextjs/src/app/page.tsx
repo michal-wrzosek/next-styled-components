@@ -1,4 +1,5 @@
-import { css, keyframes, styled } from '../react-component-lib';
+import { css, keyframes, styled } from 'next-styled-components';
+// import { css, keyframes, styled } from '@/react-component-lib';
 import { Client } from './client';
 
 const textCss = css`

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { createGlobalStyle, StyleSheetManager, ThemeProvider } from '@/react-component-lib';
+import { createGlobalStyle, StyleSheetManager, ThemeProvider } from 'next-styled-components';
+// import { createGlobalStyle, StyleSheetManager, ThemeProvider } from '@/react-component-lib';
 
 const inter = Inter({ subsets: ['latin'] });
 

@@ -1,6 +1,7 @@
 'use client';
 
-import { styled } from '@/react-component-lib';
+import { styled } from 'next-styled-components';
+// import { styled } from '@/react-component-lib';
 import { useState } from 'react';
 
 const StyledDiv = styled.div<{ $isOn: boolean }>`
@@ -8,6 +9,11 @@ const StyledDiv = styled.div<{ $isOn: boolean }>`
   height: 150px;
   padding: 10px;
   background-color: ${({ $isOn }) => ($isOn ? 'pink' : 'green')};
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const Client = () => {

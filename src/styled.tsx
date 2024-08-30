@@ -7,7 +7,9 @@ import { TagToHTMLElement } from './types';
 import React from 'react';
 import { CollectedStyles } from './collected-styles';
 
-export type DefaultTheme = Record<string, unknown>;
+export interface DefaultTheme {
+  [key: string]: unknown;
+}
 
 type HTMLExtended<Props extends object, ElementType extends Element | undefined> = ElementType extends undefined
   ? Props

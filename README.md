@@ -9,7 +9,7 @@ The goal of this library is that you should be able to use it as the [original l
 This library covers most important parts of the original lib API:
 
 - styled(Component)``
-- styled.element``
+- styled.element``v
 - createGlobalStyle``
 - keyframes``
 - `<ThemeProvider />`
