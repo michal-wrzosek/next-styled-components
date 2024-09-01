@@ -34,7 +34,7 @@ Example [`src/app/layout.tsx`](example-nextjs/src/app/layout.tsx):
 ```typescript
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { createGlobalStyle, StyleSheetManager, ThemeProvider } from '@/react-component-lib';
+import { createGlobalStyle, StyleSheetManager, ThemeProvider } from 'next-styled-components';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -77,7 +77,7 @@ export default function RootLayout({
 Example [`src/app/page.tsx`](example-nextjs/src/app/page.tsx):
 
 ```typescript
-import { css, keyframes, styled } from '../react-component-lib';
+import { css, keyframes, styled } from 'next-styled-components';
 import { Client } from './client';
 
 const textCss = css`
@@ -143,7 +143,7 @@ And an example of some client component [`src/app/client.tsx`](example-nextjs/sr
 ```typescript
 'use client';
 
-import { styled } from '@/react-component-lib';
+import { styled } from 'next-styled-components';
 import { useState } from 'react';
 
 const StyledDiv = styled.div<{ $isOn: boolean }>`
