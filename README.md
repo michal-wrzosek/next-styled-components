@@ -176,6 +176,12 @@ declare module 'next-styled-components' {
 }
 ```
 
+## How does it work
+
+As of September 2024, original Styled-Components library do not work with Next.js RSC due to the use of React Context which is not permitted. So this library is trying to use good old single global object to communicate between components. After some trials and errors I found a setup that seems to work just right. This library needs some more real world scenarios testing, so please report any issues you find.
+
+For more details, just look into the [source code](src/styled.tsx)
+
 ## Final note
 
 This library is still in an early development phase.
