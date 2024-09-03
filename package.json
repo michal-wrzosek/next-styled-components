@@ -1,6 +1,6 @@
 {
   "name": "next-styled-components",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "module": "dist/index.js",
   "description": "Styled-Components that are compatible with Next.js server components (RSC)",
   "repository": {
