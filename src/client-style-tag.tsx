@@ -10,9 +10,13 @@ export const ClientStyleTag = () => {
   const [styles, setStyles] = useState(CollectedStyles.getStyles());
 
   useEffect(() => {
-    CollectedStyles.subscribe(() => {
+    const { unsubscribe } = CollectedStyles.subscribe(() => {
       setStyles(CollectedStyles.getStyles());
     });
+
+    return () => {
+      unsubscribe();
+    };
   });
 
   return <style data-id="styled-components-client" dangerouslySetInnerHTML={{ __html: styles }} />;

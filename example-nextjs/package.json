@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "next": "14.2.5",
-    "next-styled-components": "^0.0.1",
+    "next-styled-components": "0.0.4",
     "react": "^18",
     "react-dom": "^18"
   },
